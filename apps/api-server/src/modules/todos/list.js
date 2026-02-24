@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { supabase, isSupabaseConfigured } = require("../../lib/supabase");
 
-const todos = [
+const fallbackTodos = [
   {
     id: 1,
     title: "Buy Groceries",
@@ -29,8 +30,24 @@ const todos = [
   },
 ];
 
-router.get("/", (req, res) => {
-  res.send(todos);
+router.get("/", async (req, res) => {
+  if (!isSupabaseConfigured) {
+    return res.send(fallbackTodos);
+  }
+
+  const { data, error } = await supabase
+    .from("todo_items")
+    .select("id, title, completed")
+    .order("id", { ascending: true });
+
+  if (error) {
+    return res.status(500).json({
+      message: "Failed to fetch todos from Supabase",
+      details: error.message,
+    });
+  }
+
+  return res.send(data);
 });
 
 module.exports = router;
