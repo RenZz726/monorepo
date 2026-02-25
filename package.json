@@ -10,5 +10,8 @@
     "dev:server": "npm run dev -w api-server",
     "dev": "npm run dev:server",
     "build:client": "npm run build -w web-app"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.97.0"
   }
 }
