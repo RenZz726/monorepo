@@ -79,7 +79,9 @@
           >
             You're an authorized user!
           </h2>
-          <h2 v-else class="text-red-600 text-center text-2xl">You're not an authorized user!</h2>
+          <h2 v-else class="text-red-600 text-center text-2xl">
+            You're not an authorized user!
+          </h2>
         </div>
       </div>
     </main>

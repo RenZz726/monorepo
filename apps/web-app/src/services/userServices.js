@@ -1,4 +1,5 @@
-import { db, remoteConfig } from "../firebase";
+import { db, remoteConfig, database } from "../firebase";
+import { ref, set, get, onValue } from "firebase/database";
 import {
   addDoc,
   getDocs,
