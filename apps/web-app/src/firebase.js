@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 import { getRemoteConfig } from "firebase/remote-config";
 
 const firebaseConfig = {
@@ -10,12 +11,14 @@ const firebaseConfig = {
   storageBucket: "chat-app-980df.firebasestorage.app",
   messagingSenderId: "874218502847",
   appId: "1:874218502847:web:00860e42a636e70626a40a",
+  databaseURL: "https://chat-app-980df-default-rtdb.firebaseio.com",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const database = getDatabase(app);
 const remoteConfig = getRemoteConfig(app);
 remoteConfig.settings.minimumFetchIntervalMillis = 0;
 
-export { db, auth, remoteConfig };
+export { db, auth, remoteConfig, database };
