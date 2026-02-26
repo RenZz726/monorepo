@@ -51,3 +51,16 @@ export const fetchAuthorizedUsers = async () => {
   const authorizedUsers = getValue(remoteConfig, "authorized_users").asString();
   return authorizedUsers.split(",");
 };
+
+export const writeToDB = async () => {
+  const starCountRef = ref(database, "posts/1/starCount");
+  const nextValue = Date.now();
+  // await set(starCountRef, nextValue);
+
+  onValue(ref(database, "posts/"), (snapshot) => {
+    console.log(snapshot.val());
+  });
+  // Read back immediately so caller can confirm the write completed.
+  // const snapshot = await get(starCountRef);
+  // return snapshot.val();
+};

@@ -1,5 +1,6 @@
 import Dashboard from "@/views/Dashboard.vue";
 import Homepage from "@/views/Homepage.vue";
+import RealTimeDB from "@/views/RealTimeDB.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -22,8 +23,13 @@ const router = createRouter({
     {
       path: "/dashboard",
       name: "dashboard",
-      component: Dashboard
-    }
+      component: Dashboard,
+    },
+    {
+      path: "/dashboard/realtimedb",
+      name: "realtimedb",
+      component: RealTimeDB,
+    },
   ],
 });
 export { router };
